@@ -1,0 +1,19 @@
+.completed-todo {
+    border: 2px var(--completeTodoColor) solid;
+    box-shadow: 2px 2px 7px var(--completeTodoColor);
+}
+
+.uncompleted-todo {
+    border: 2px var(--uncompleteTodoColor) solid;
+    box-shadow: 2px 2px 7px var(--uncompleteTodoColor);
+}
+
+.completed-todo:hover {
+    box-shadow: 5px 5px 7px var(--completeTodoColor);
+    transition: 0.3s all;
+}
+
+.uncompleted-todo:hover {
+    box-shadow: 5px 5px 7px var(--uncompleteTodoColor);
+    transition: 0.3s all;
+}

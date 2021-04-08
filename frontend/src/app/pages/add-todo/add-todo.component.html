@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="row custom-row justify-content-center">
+        <div class="col-md-6">
+            <form (ngSubmit)="addNewTodo(form)" #form="ngForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" [(ngModel)]="title" class="form-control" required
+                        #titleTemp="ngModel" [minlength]="todoService.titleMinimumCharactersNumber" />
+                    <div *ngIf="titleTemp.invalid && (titleTemp.dirty || titleTemp.touched)" class="error">
+                        <div *ngIf="titleTemp.errors.required">
+                            Title is required.
+                        </div>
+                        <div *ngIf="titleTemp.errors.minlength">
+                            Title must be at least {{ todoService.titleMinimumCharactersNumber }} characters long.
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Add Todo</button>
+            </form>
+        </div>
+    </div>
+</div>

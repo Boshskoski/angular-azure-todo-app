@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "inputData",
+      "databaseName": "%DB_NAME%",
+      "collectionName": "%COLLECTION_NAME%",
+      "connectionStringSetting": "DB_CONN_STRING",
+      "partitionKey": "/todos",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}

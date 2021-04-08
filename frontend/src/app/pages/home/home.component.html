@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row" *ngIf="todos$ | async as todos">
+        <ng-container *ngFor="let todo of todos.response">
+            <div class="col-md-4">
+                <div class="card mt-5"
+                    [ngClass]="{'completed-todo': todo.completed, 'uncompleted-todo': !todo.completed}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ todo.title }}</h5>
+                        <p>Completed: {{ todo.completed ? 'Yes' : 'No' }}</p>
+                        <div class="links">
+                            <a (click)="callModal('editTodo', todo)" data-toggle="modal" data-target="#editTodo"
+                                class="btn btn-primary">Edit</a>
+                            <a (click)="callModal('deleteTodo', todo)" data-toggle="modal" data-target="#deleteTodo"
+                                class="btn btn-danger ml-3">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row mt-5" *ngIf="isThereTodosRespose$ | async as isThereTodosRespose">
+        <ng-container *ngIf="!isThereTodosRespose.length">
+            <div class="no-todos-response col-md-12 d-flex justify-content-center">
+                <h1 class="mt-5">You don't have any todos</h1>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<app-modal [modalId]="modalId" (sendModalResponseEvent)="modalResponseHandler($event)"
+    [lastClickedTodo]="lastClickedTodo"></app-modal>
